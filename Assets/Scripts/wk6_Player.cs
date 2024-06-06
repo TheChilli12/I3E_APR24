@@ -14,6 +14,16 @@ public class Player : MonoBehaviour
     /// <summary>
     /// The UI text that stores the player score
     /// </summary>
+    public TextMeshProUGUI healthText;
+
+    /// <summary>
+    /// The current health of the player
+    /// </summary>
+    int currentHealth = 5;
+
+    /// <summary>
+    /// The UI text that stores the player score
+    /// </summary>
     public TextMeshProUGUI scoreText;
 
     /// <summary>
@@ -37,6 +47,14 @@ public class Player : MonoBehaviour
         currentScore += scoreToAdd;
 
         scoreText.text = currentScore.ToString();
+    }
+
+        public void ChangeHealth(int hpToChange)
+    {
+        // Change the health of the player by hpToChange
+        currentHealth += hpToChange;
+
+        healthText.text = "Health remaining: "+ currentHealth.ToString();
     }
 
     /// <summary>

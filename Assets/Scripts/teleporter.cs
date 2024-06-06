@@ -14,7 +14,7 @@ public class SceneChanger : Interactable
     // Start is called before the first frame update
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player");
+        if (other.gameObject.tag == "Player")
         {
             ChangeScene();
         }
@@ -24,5 +24,10 @@ public class SceneChanger : Interactable
     void ChangeScene()
     {
         SceneManager.LoadScene(targetSceneIndex);
+    }
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
     }
 }

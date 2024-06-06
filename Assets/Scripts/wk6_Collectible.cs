@@ -1,6 +1,6 @@
 /*
- * Author: Elyas Chua-Aziz
- * Date: 06/05/2024
+ * Author: Javier Chen Yuhong
+ * Date: 06/06/2024
  * Description: 
  * The Collectible will destroy itself after being collided with.
  */
