@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "I3E_APR24.sln"
+    "dotnet.defaultSolution": "I3E_24.sln"
 }

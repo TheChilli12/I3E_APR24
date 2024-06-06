@@ -10,6 +10,7 @@ using UnityEngine;
 
 public class Door : Interactable
 {
+    public GameObject doorPivot;
     /// <summary>
     /// Flags if the door is open
     /// </summary>
@@ -22,7 +23,7 @@ public class Door : Interactable
     private void OnTriggerEnter(Collider other)
     {
         // Check if the obejct entering the trigger has the "Player" tag
-        if(currentPlayer.tag == "Player")
+        if(other.gameObject.tag == "Player")
         {
             // Store the current player
             currentPlayer = other.gameObject.GetComponent<Player>();
@@ -35,8 +36,9 @@ public class Door : Interactable
     private void OnTriggerExit(Collider other)
     {
         // Check if the obejct exiting the trigger has the "Player" tag
-        if (currentPlayer.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
+            CloseDoor();
             // Remove the player Interactable
             RemovePlayerInteractable(currentPlayer);
 
@@ -71,16 +73,27 @@ public class Door : Interactable
             // transform.eulerAngles.y += 90f;
 
             // Create a new Vector3 and store the current rotation.
-            Vector3 newRotation = transform.eulerAngles;
-
-            // Add 90 degrees to the y axis rotation
+            Vector3 newRotation = doorPivot.transform.eulerAngles;
             newRotation.y += 90f;
+            doorPivot.transform.eulerAngles = newRotation;
+            opened = true;    
+        }
+    }
 
-            // Assign the new rotation to the transform
-            transform.eulerAngles = newRotation;
+    public void CloseDoor()
+    {
+        // Door should open only when it is not locked
+        // and not already opened.
+        if(!locked && opened)
+        {
+            // Cannot directly modify the transform rotation.
+            // transform.eulerAngles.y += 90f;
 
-            // Set the opened bool to true
-            opened = true;
+            // Create a new Vector3 and store the current rotation.
+            Vector3 newRotation = doorPivot.transform.eulerAngles;
+            newRotation.y -= 90f;
+            doorPivot.transform.eulerAngles = newRotation;
+            opened = false;    
         }
     }
 

@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
         // Increase the score of the player by scoreToAdd
         currentScore += scoreToAdd;
 
-        scoreText.text = "Score: " + currentScore.ToString();
+        scoreText.text = currentScore.ToString();
     }
 
     /// <summary>
