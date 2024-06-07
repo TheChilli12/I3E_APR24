@@ -36,7 +36,38 @@ public class Player : MonoBehaviour
     /// </summary>
     Interactable currentInteractable;
 
+    [SerializeField]
+    Transform playerCamera;
 
+    [SerializeField]
+    float interactionDistance;
+
+    [SerializeField]
+    TextMeshProUGUI interactionText;
+
+    private void Update()
+    {
+        Debug.DrawLine(playerCamera.position, playerCamera.position + (playerCamera.forward * interactionDistance), Color.red);
+        RaycastHit hitInfo;
+        if(Physics.Raycast(playerCamera.position, playerCamera.forward, out hitInfo, interactionDistance))
+        {
+            Debug.Log(hitInfo.transform.name);
+            if(hitInfo.transform.TryGetComponent<Interactable>(out currentInteractable))
+            {
+                interactionText.gameObject.SetActive(true);    
+            }
+            else
+            {
+                currentInteractable = null;
+                interactionText.gameObject.SetActive(false); 
+            }
+        }
+        else
+        {
+            currentInteractable = null;
+            interactionText.gameObject.SetActive(false); 
+        }
+    }
     /// <summary>
     /// Increases the score of the player by <paramref name="scoreToAdd"/>
     /// </summary>
@@ -61,10 +92,11 @@ public class Player : MonoBehaviour
     /// Update the player's current Interactable
     /// </summary>
     /// <param name="newInteractable">The interactable to be updated</param>
-    public void UpdateInteractable(Interactable newInteractable)
-    {
-        currentInteractable = newInteractable;
-    }
+
+    // public void UpdateInteractable(Interactable newInteractable)
+    // {
+    //     currentInteractable = newInteractable;
+    // }
 
     /// <summary>
     /// Callback function for the Interact input action

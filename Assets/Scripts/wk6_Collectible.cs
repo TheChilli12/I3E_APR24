@@ -40,27 +40,27 @@ public class Collectible : Interactable
     /// Callback function for when a collision occurs
     /// </summary>
     /// <param name="collision">Collision event data</param>
-    private void OnCollisionEnter(Collision collision)
-    {
-        // Check if the object that
-        // touched me has a 'Player' tag
-        if(collision.gameObject.tag == "Player")
-        {
-            currentPlayer = collision.gameObject.GetComponent<Player>();
-            UpdatePlayerInteractable(currentPlayer);
-        }
-    }
+    // private void OnCollisionEnter(Collision collision)
+    // {
+    //     // Check if the object that
+    //     // touched me has a 'Player' tag
+    //     if(collision.gameObject.tag == "Player")
+    //     {
+    //         currentPlayer = collision.gameObject.GetComponent<Player>();
+    //         UpdatePlayerInteractable(currentPlayer);
+    //     }
+    // }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        // Check if the object that
-        // stopped touching me has a 'Player' tag
-        if (collision.gameObject.tag == "Player")
-        {
-            RemovePlayerInteractable(currentPlayer);
-            currentPlayer = null;
-        }
-    }
+    // private void OnCollisionExit(Collision collision)
+    // {
+    //     // Check if the object that
+    //     // stopped touching me has a 'Player' tag
+    //     if (collision.gameObject.tag == "Player")
+    //     {
+    //         RemovePlayerInteractable(currentPlayer);
+    //         currentPlayer = null;
+    //     }
+    // }
 
 
 }

@@ -25,4 +25,29 @@ public class Collectible1 : MonoBehaviour
         // Destroy the attached GameObject
         Destroy(gameObject);
     }
+
+    /// <summary>
+    /// Callback function for when a collision occurs
+    /// </summary>
+    /// <param name="collision">Collision event data</param>
+
+    // private void OnCollisionEnter(Collision collision)
+    // {
+    //     // Check if the object that
+    //     // touched me has a 'Player' tag
+    //     if(collision.gameObject.tag == "Player")
+    //     {
+    //         collision.gameObject.GetComponent<Player>().UpdateCollectible(this);
+    //         // Look for the "Player" component on the GameObject that collided with me.
+    //         // Call the IncreaseScore function in the found "Player" component.
+    //     }
+    // }
+    //     private void OnCollisionExit(Collision collision)
+    // {
+    //     if(collision.gameObject.tag == "Player")
+    //     {
+    //         collision.gameObject.GetComponent<Player>().UpdateCollectible(null);
+    //         //Tells the scipt the collectible is out of range and cannot be collected
+    //     }
+    // }
 }

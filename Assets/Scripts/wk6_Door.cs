@@ -20,32 +20,33 @@ public class Door : Interactable
     /// Flags if the door is locked
     /// </summary>
     bool locked = false;
-    private void OnTriggerEnter(Collider other)
-    {
-        // Check if the obejct entering the trigger has the "Player" tag
-        if(other.gameObject.tag == "Player")
-        {
-            // Store the current player
-            currentPlayer = other.gameObject.GetComponent<Player>();
 
-            // Update the player interactable to be this door.
-            UpdatePlayerInteractable(currentPlayer);
-        }
-    }
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     // Check if the obejct entering the trigger has the "Player" tag
+    //     if(other.gameObject.tag == "Player")
+    //     {
+    //         // Store the current player
+    //         currentPlayer = other.gameObject.GetComponent<Player>();
 
-    private void OnTriggerExit(Collider other)
-    {
-        // Check if the obejct exiting the trigger has the "Player" tag
-        if (other.gameObject.tag == "Player")
-        {
-            CloseDoor();
-            // Remove the player Interactable
-            RemovePlayerInteractable(currentPlayer);
+    //         // Update the player interactable to be this door.
+    //         UpdatePlayerInteractable(currentPlayer);
+    //     }
+    // }
 
-            // Set the current Player to null
-            currentPlayer = null;
-        }
-    }
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     // Check if the obejct exiting the trigger has the "Player" tag
+    //     if (other.gameObject.tag == "Player")
+    //     {
+    //         CloseDoor();
+    //         // Remove the player Interactable
+    //         RemovePlayerInteractable(currentPlayer);
+
+    //         // Set the current Player to null
+    //         currentPlayer = null;
+    //     }
+    // }
 
     /// <summary>
     /// Handles the door's interaction
@@ -53,11 +54,19 @@ public class Door : Interactable
     /// <param name="thePlayer">The player that interacted with the door</param>
     public override void Interact(Player thePlayer)
     {
-        // Call the Interact function from the base Interactable class.
-        base.Interact(thePlayer);
+        if(!opened)
+        {
+            // Call the Interact function from the base Interactable class.
+            base.Interact(thePlayer);
 
-        // Call the OpenDoor() function
-        OpenDoor();
+            // Call the OpenDoor() function
+            OpenDoor();
+        }
+        else
+        {
+            base.Interact(thePlayer);
+            CloseDoor();
+        }
     }
 
     /// <summary>

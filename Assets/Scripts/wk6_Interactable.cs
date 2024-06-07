@@ -18,20 +18,22 @@ public class Interactable : MonoBehaviour
     /// <summary>
     /// Update the player's Interactable
     /// </summary>
-    /// <param name="thePlayer">The player to update</param>
-    public void UpdatePlayerInteractable(Player thePlayer)
-    {
-        thePlayer.UpdateInteractable(this);
-    }
+
+    // /// <param name="thePlayer">The player to update</param>
+    // public void UpdatePlayerInteractable(Player thePlayer)
+    // {
+    //     thePlayer.UpdateInteractable(this);
+    // }
 
     /// <summary>
     /// Remove the player's Interactable
     /// </summary>
-    /// <param name="thePlayer">The player that should remove its Interactable</param>
-    public void RemovePlayerInteractable(Player thePlayer)
-    {
-        thePlayer.UpdateInteractable(null);
-    }
+
+    // /// <param name="thePlayer">The player that should remove its Interactable</param>
+    // public void RemovePlayerInteractable(Player thePlayer)
+    // {
+    //     thePlayer.UpdateInteractable(null);
+    // }
 
     /// <summary>
     /// Execute the object's interaction
