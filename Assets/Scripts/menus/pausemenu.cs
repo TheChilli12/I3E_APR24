@@ -1,8 +1,8 @@
 /*
  * Author: Javier Chen Yuhong
- * Date: 06/06/2024
+ * Date: 13/06/2024
  * Description: 
- * Start button for the game
+ * Contains functions related to the Pause menu.
  */
 using System.Collections;
 using System.Collections.Generic;

@@ -1,6 +1,6 @@
 /*
- * Author: Elyas Chua-Aziz
- * Date: 06/05/2024
+ * Author: Javier Chen Yuhong
+ * Date: 13/06/2024
  * Description: 
  * Contains functions related to the Player such as increasing score.
  */
@@ -47,13 +47,16 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        ///Raycast Ray is created
         Debug.DrawLine(playerCamera.position, playerCamera.position + (playerCamera.forward * interactionDistance), Color.red);
         RaycastHit hitInfo;
         if(Physics.Raycast(playerCamera.position, playerCamera.forward, out hitInfo, interactionDistance))
         {
             Debug.Log(hitInfo.transform.name);
+            ///Checks if raycast hits an interactable class object
             if(hitInfo.transform.TryGetComponent<Interactable>(out currentInteractable))
             {
+                ///Shows interactionText raycast hits an interactable class object
                 interactionText.gameObject.SetActive(true);    
             }
             else
@@ -64,7 +67,9 @@ public class Player : MonoBehaviour
         }
         else
         {
+            ///Sets currentInteractable to null
             currentInteractable = null;
+            ///Hides interactionText
             interactionText.gameObject.SetActive(false); 
         }
     }
@@ -93,7 +98,7 @@ public class Player : MonoBehaviour
 
     public void Instakill()
     {
-        // Change the health of the player to 0
+        // Change the health of the player to 0, simulates instakill
         currentHealth = 0;
         healthText.text = "Health remaining: "+ currentHealth.ToString();
     }
