@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class healthpack : Interactable
 {
-    // Start is called before the first frame update
-    void Start()
+    public int myHealth = 5;
+    
+    [SerializeField]
+    private AudioClip collectAudio;
+
+    public override void Interact(Player thePlayer)
     {
-        
+        base.Interact(thePlayer);
+        thePlayer.ChangeHealth(myHealth);
+        Collected();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Collected()
     {
-        
+        AudioSource.PlayClipAtPoint(collectAudio, transform.position, 1f);
+        // Destroy the attached GameObject
+        Destroy(gameObject);
     }
 }

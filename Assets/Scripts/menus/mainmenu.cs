@@ -12,14 +12,10 @@ using UnityEngine.SceneManagement;
 public class MainMenu : SharedMenu
 {
     public GameObject creditsMenu;
-    public virtual void backbutton()
-    {
-        currentPage.SetActive(false);
-        mainMenu.SetActive(true);
-    }
     public void PlayGame()
     {
         LockMouse();
+        Time.timeScale = 1f;
         SceneManager.LoadScene(1);
     }
 

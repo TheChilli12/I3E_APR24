@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     /// <summary>
     /// The current health of the player
     /// </summary>
-    int currentHealth = 5;
+    public int currentHealth = 5;
 
     /// <summary>
     /// The UI text that stores the player score
@@ -80,11 +80,21 @@ public class Player : MonoBehaviour
         scoreText.text = currentScore.ToString();
     }
 
-        public void ChangeHealth(int hpToChange)
+    public void ChangeHealth(int hpToChange)
     {
         // Change the health of the player by hpToChange
         currentHealth += hpToChange;
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+        }
+        healthText.text = "Health remaining: "+ currentHealth.ToString();
+    }
 
+    public void Instakill()
+    {
+        // Change the health of the player to 0
+        currentHealth = 0;
         healthText.text = "Health remaining: "+ currentHealth.ToString();
     }
 

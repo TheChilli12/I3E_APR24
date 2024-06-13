@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : SharedMenu
 {
     public GameObject pauseContent;
-    public static bool isPaused;
+    public static bool isPaused = false;
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Tab))
@@ -27,11 +27,8 @@ public class PauseMenu : SharedMenu
             }
         }
     }
-    void Start()
-    {
-        mainMenu.SetActive(false);
-        isPaused = false;
-    }
+
+
 
     public void PauseGame()
     {
@@ -52,6 +49,8 @@ public class PauseMenu : SharedMenu
     public override void ExitGame()
     {
         Time.timeScale = 1f;
+        ResumeGame();
+        UnlockMouse();
         SceneManager.LoadScene(0);
     }
 
