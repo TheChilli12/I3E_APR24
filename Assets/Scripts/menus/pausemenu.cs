@@ -13,6 +13,7 @@ public class PauseMenu : SharedMenu
 {
     public GameObject pauseContent;
     public static bool isPaused = false;
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Tab))
@@ -27,8 +28,6 @@ public class PauseMenu : SharedMenu
             }
         }
     }
-
-
 
     public void PauseGame()
     {

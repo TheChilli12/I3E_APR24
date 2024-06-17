@@ -39,7 +39,7 @@ public class Collectible : Interactable
     public override void Interact(Player thePlayer)
     {
         base.Interact(thePlayer);
-        thePlayer.IncreaseScore(myScore);
+        GameManager.instance.IncreaseScore(myScore);
         Collected();
     }
 }

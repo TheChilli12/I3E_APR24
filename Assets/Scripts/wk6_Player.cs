@@ -12,26 +12,6 @@ using TMPro;
 public class Player : MonoBehaviour
 {
     /// <summary>
-    /// The UI text that stores the player score
-    /// </summary>
-    public TextMeshProUGUI healthText;
-
-    /// <summary>
-    /// The current health of the player
-    /// </summary>
-    public int currentHealth = 5;
-
-    /// <summary>
-    /// The UI text that stores the player score
-    /// </summary>
-    public TextMeshProUGUI scoreText;
-
-    /// <summary>
-    /// The current score of the player
-    /// </summary>
-    int currentScore = 0;
-
-    /// <summary>
     /// The current Interactable of the player
     /// </summary>
     Interactable currentInteractable;
@@ -72,35 +52,6 @@ public class Player : MonoBehaviour
             ///Hides interactionText
             interactionText.gameObject.SetActive(false); 
         }
-    }
-    /// <summary>
-    /// Increases the score of the player by <paramref name="scoreToAdd"/>
-    /// </summary>
-    /// <param name="scoreToAdd">The amount to increase by</param>
-    public void IncreaseScore(int scoreToAdd)
-    {
-        // Increase the score of the player by scoreToAdd
-        currentScore += scoreToAdd;
-
-        scoreText.text = currentScore.ToString();
-    }
-
-    public void ChangeHealth(int hpToChange)
-    {
-        // Change the health of the player by hpToChange
-        currentHealth += hpToChange;
-        if (currentHealth <= 0)
-        {
-            currentHealth = 0;
-        }
-        healthText.text = "Health remaining: "+ currentHealth.ToString();
-    }
-
-    public void Instakill()
-    {
-        // Change the health of the player to 0, simulates instakill
-        currentHealth = 0;
-        healthText.text = "Health remaining: "+ currentHealth.ToString();
     }
 
     /// <summary>

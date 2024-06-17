@@ -810,9 +810,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec03d8e60b2ed94884009611680da94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creditsMenu: {fileID: 1824027266}
   helpMenu: {fileID: 898310653}
   mainMenu: {fileID: 573397817}
+  currentPage: {fileID: 0}
+  creditsMenu: {fileID: 1824027266}
 --- !u!1 &754712757
 GameObject:
   m_ObjectHideFlags: 0

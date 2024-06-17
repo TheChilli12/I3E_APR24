@@ -34,7 +34,7 @@ public class Hazard : MonoBehaviour
                 ///Plays damage audio
                 AudioSource.PlayClipAtPoint(damageAudio, transform.position, 1f);
                 ///calls ChangeHealth function to damage the player and update health
-                other.gameObject.GetComponent<Player>().ChangeHealth(damageAmount);
+                GameManager.instance.ChangeHealth(damageAmount);
             }
             /// Check if hazard is instakill
             else
@@ -42,7 +42,7 @@ public class Hazard : MonoBehaviour
                 ///Plays damage audio
                 AudioSource.PlayClipAtPoint(damageAudio, transform.position, 1f);
                 ///Xalls Instakill function to damage the player and update health to 0
-                other.gameObject.GetComponent<Player>().Instakill();
+                GameManager.instance.Instakill();
             }
         }
     }

@@ -5,14 +5,13 @@ using UnityEngine;
 public class healthpack : Interactable
 {
     public int myHealth = 5;
-    
     [SerializeField]
     private AudioClip collectAudio;
 
     public override void Interact(Player thePlayer)
     {
         base.Interact(thePlayer);
-        thePlayer.ChangeHealth(myHealth);
+        GameManager.instance.ChangeHealth(myHealth);
         Collected();
     }
 
