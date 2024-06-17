@@ -22,9 +22,6 @@ public class Player : MonoBehaviour
     [SerializeField]
     float interactionDistance;
 
-    [SerializeField]
-    TextMeshProUGUI interactionText;
-
     private void Update()
     {
         ///Raycast Ray is created
@@ -37,12 +34,12 @@ public class Player : MonoBehaviour
             if(hitInfo.transform.TryGetComponent<Interactable>(out currentInteractable))
             {
                 ///Shows interactionText raycast hits an interactable class object
-                interactionText.gameObject.SetActive(true);    
+                GameManager.instance.RaycastOn();
             }
             else
             {
                 currentInteractable = null;
-                interactionText.gameObject.SetActive(false); 
+                GameManager.instance.RaycastOff();
             }
         }
         else
@@ -50,7 +47,7 @@ public class Player : MonoBehaviour
             ///Sets currentInteractable to null
             currentInteractable = null;
             ///Hides interactionText
-            interactionText.gameObject.SetActive(false); 
+            GameManager.instance.RaycastOff();
         }
     }
 

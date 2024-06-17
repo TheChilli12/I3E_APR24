@@ -42,7 +42,7 @@ public class Hazard : MonoBehaviour
                 ///Plays damage audio
                 AudioSource.PlayClipAtPoint(damageAudio, transform.position, 1f);
                 ///Xalls Instakill function to damage the player and update health to 0
-                GameManager.instance.Instakill();
+                GameManager.instance.InstaKill();
             }
         }
     }

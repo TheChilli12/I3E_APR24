@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [SerializeField]
+    public TextMeshProUGUI interactionText;
+
     /// <summary>
     /// The UI text that stores the player score
     /// </summary>
@@ -46,12 +49,13 @@ public class GameManager : MonoBehaviour
         healthText.text = "Health remaining: "+ currentHealth.ToString();
     }
 
-    public void Instakill()
+    public void InstaKill()
     {
         // Change the health of the player to 0, simulates instakill
         currentHealth = 0;
         // healthText.text = "Health remaining: "+ currentHealth.ToString();
     }
+
 
     /// <summary>
     /// The UI text that stores the player score
@@ -69,5 +73,15 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void RaycastOn()
+    {
+        interactionText.gameObject.SetActive(true);
+    }
+
+    public void RaycastOff()
+    {
+        interactionText.gameObject.SetActive(false);
     }
 }
