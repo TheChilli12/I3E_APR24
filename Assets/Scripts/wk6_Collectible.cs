@@ -1,6 +1,6 @@
 /*
  * Author: Javier Chen Yuhong
- * Date: 06/06/2024
+ * Date: 18/06/2024
  * Description: 
  * The Collectible will destroy itself after being collided with.
  */
@@ -19,6 +19,11 @@ public class Collectible : Interactable
     /// <summary>
     /// The score value that this collectible is worth.
     /// </summary>
+    public int collectibleCount = 1;
+
+    /// <summary>
+    /// The score value that this collectible is worth.
+    /// </summary>
     public int myScore = 5;
 
     /// <summary>
@@ -26,6 +31,7 @@ public class Collectible : Interactable
     /// </summary>
     public void Collected()
     {
+        //Plays audio upon collection
         AudioSource.PlayClipAtPoint(collectAudio, transform.position, 1f);
         // Destroy the attached GameObject
         Destroy(gameObject);
@@ -39,7 +45,9 @@ public class Collectible : Interactable
     public override void Interact(Player thePlayer)
     {
         base.Interact(thePlayer);
+        ///Increases player score by collectible point value
         GameManager.instance.IncreaseScore(myScore);
+        ///calls function that plays audio and destroys collectible
         Collected();
     }
 }

@@ -1,3 +1,9 @@
+/*
+ * Author: Javier Chen Yuhong
+ * Date: 13/06/2024
+ * Description: 
+ * Handles systems of the game such as HP, score and collectible count
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +25,12 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// The current health of the player
     /// </summary>
-    public int currentHealth = 5;
+    public int currentHealth = 3;
+
+    /// <summary>
+    /// The count of collectibles collected.
+    /// </summary>
+    public int collectibleCount = 0;
 
     /// <summary>
     /// The current score of the player
@@ -35,6 +46,8 @@ public class GameManager : MonoBehaviour
         // Increase the score of the player by scoreToAdd
         currentScore += scoreToAdd;
 
+        // Increase the collectibleCount of the player by 1
+        collectibleCount += 1;
         // scoreText.text = currentScore.ToString();
     }
 
@@ -53,7 +66,7 @@ public class GameManager : MonoBehaviour
     {
         // Change the health of the player to 0, simulates instakill
         currentHealth = 0;
-        // healthText.text = "Health remaining: "+ currentHealth.ToString();
+        healthText.text = "Health remaining: "+ currentHealth.ToString();
     }
 
 

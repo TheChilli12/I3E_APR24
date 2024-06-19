@@ -1,6 +1,6 @@
 /*
- * Author: Elyas Chua-Aziz
- * Date: 06/05/2024
+ * Author: Javier Chen Yuhong
+ * Date: 18/06/2024
  * Description: 
  * The door that opens when the player is near it and presses the interact button.
  */

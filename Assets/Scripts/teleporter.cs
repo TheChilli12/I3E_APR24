@@ -1,6 +1,6 @@
 /*
  * Author: Javier Chen Yuhong
- * Date: 06/06/2024
+ * Date: 18/06/2024
  * Description: 
  * Teleporter that will be used to change scenes
  */
@@ -25,6 +25,4 @@ public class SceneChanger : MonoBehaviour
     {
         SceneManager.LoadScene(targetSceneIndex);
     }
-
-
 }

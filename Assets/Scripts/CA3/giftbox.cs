@@ -1,26 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+// using System.Collections;
+// using System.Collections.Generic;
+// using UnityEngine;
 
-public class Giftbox : Interactable
-{
-    [SerializeField]
-    private GameObject collectibleToSpawn;
+// public class Giftbox : Interactable
+// {
+//     [SerializeField]
+//     private GameObject collectibleToSpawn;
 
-    [SerializeField]
-    private AudioClip collectAudio;
+//     [SerializeField]
+//     private AudioClip collectAudio;
 
-    public override void Interact(Player thePlayer)
-    {
-        base.Interact(thePlayer);
-        SpawnCollectible();
-        AudioSource.PlayClipAtPoint(collectAudio, transform.position, 1f);
-        Destroy(gameObject);
-    }
+//     public override void Interact(Player thePlayer)
+//     {
+//         base.Interact(thePlayer);
+//         SpawnCollectible();
+//         AudioSource.PlayClipAtPoint(collectAudio, transform.position, 1f);
+//         Destroy(gameObject);
+//     }
 
-    void SpawnCollectible()
-    {
-        Instantiate(collectibleToSpawn, transform.position, collectibleToSpawn.transform.rotation);
-    }
-}
+//     void SpawnCollectible()
+//     {
+//         Instantiate(collectibleToSpawn, transform.position, collectibleToSpawn.transform.rotation);
+//     }
+// }
 
