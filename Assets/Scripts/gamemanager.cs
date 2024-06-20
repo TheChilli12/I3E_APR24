@@ -13,7 +13,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
+    
     [SerializeField]
     public TextMeshProUGUI interactionText;
 
