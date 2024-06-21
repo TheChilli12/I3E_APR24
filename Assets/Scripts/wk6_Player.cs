@@ -2,7 +2,7 @@
  * Author: Javier Chen Yuhong
  * Date: 13/06/2024
  * Description: 
- * Contains functions related to the Player such as increasing score.
+ * Contains functions related to the Player such as raycasting
  */
 using System.Collections;
 using System.Collections.Generic;

@@ -13,7 +13,7 @@ public class Hazard : MonoBehaviour
     /// <summary>
     /// How much damage is done to the player
     /// </summary>
-    public int damageAmount;
+    public int damageAmount = -1;
     /// <summary>
     /// boolean to check whether it will instantly kill the player
     /// </summary>
