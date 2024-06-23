@@ -18,9 +18,26 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI interactionText;
 
     /// <summary>
+    /// Status of the Special Collectible
+    /// </summary>
+    [SerializeField]
+    public bool specialCollected = false;
+
+    /// <summary>
+    /// Status of the first objective
+    /// </summary>
+    [SerializeField]
+    public bool objective1 = false;
+
+    /// <summary>
     /// The UI text that stores the player score
     /// </summary>
     public TextMeshProUGUI healthText;
+
+    /// <summary>
+    /// The UI text that stores the player's objective
+    /// </summary>
+    public TextMeshProUGUI currentObjective;
 
     /// <summary>
     /// The current health of the player
@@ -41,6 +58,12 @@ public class GameManager : MonoBehaviour
     /// Increases the score of the player by <paramref name="scoreToAdd"/>
     /// </summary>
     /// <param name="scoreToAdd">The amount to increase by</param>
+
+    public void objective1complete()
+    {
+        currentObjective.text = "- Exit the ship and collect the coins";
+    }
+
     public void IncreaseScore(int scoreToAdd)
     {
         // Increase the score of the player by scoreToAdd

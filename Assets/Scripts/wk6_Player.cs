@@ -38,12 +38,14 @@ public class Player : MonoBehaviour
             }
             else
             {
+                GameManager.instance.interactionText.text = "\"e\" to interact";
                 currentInteractable = null;
                 GameManager.instance.RaycastOff();
             }
         }
         else
         {
+            GameManager.instance.interactionText.text = "\"e\" to interact";
             ///Sets currentInteractable to null
             currentInteractable = null;
             ///Hides interactionText
