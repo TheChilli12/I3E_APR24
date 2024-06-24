@@ -1,3 +1,9 @@
+/*
+ * Author: Javier Chen Yuhong
+ * Date: 24/06/2024
+ * Description: 
+ * Contains functions related to the Ending of the game.
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

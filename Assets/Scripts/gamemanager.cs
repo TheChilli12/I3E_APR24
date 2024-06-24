@@ -24,12 +24,6 @@ public class GameManager : MonoBehaviour
     public bool specialCollected = false;
 
     /// <summary>
-    /// Status of the first objective
-    /// </summary>
-    [SerializeField]
-    public bool objective1 = false;
-
-    /// <summary>
     /// The UI text that stores the player score
     /// </summary>
     public TextMeshProUGUI healthText;
@@ -61,7 +55,7 @@ public class GameManager : MonoBehaviour
 
     public void objective1complete()
     {
-        currentObjective.text = "- Exit the ship and collect the coins";
+        currentObjective.text = $"- Exit the ship and collect the coins {collectibleCount}/5";
     }
 
     public void IncreaseScore(int scoreToAdd)
@@ -71,26 +65,17 @@ public class GameManager : MonoBehaviour
 
         // Increase the collectibleCount of the player by 1
         collectibleCount += 1;
-        // scoreText.text = currentScore.ToString();
+        scoreText.text = currentScore.ToString();
     }
 
     public void ChangeHealth(int hpToChange)
     {
         // Change the health of the player by hpToChange
         currentHealth += hpToChange;
-        if (currentHealth <= 0)
-        {
-            currentHealth = 0;
-        }
-        healthText.text = "Health remaining: "+ currentHealth.ToString();
+        currentHealth = Mathf.Max(0, currentHealth);
+        healthText.text = $"Health remaining: {currentHealth}";
     }
 
-    public void InstaKill()
-    {
-        // Change the health of the player to 0, simulates instakill
-        currentHealth = 0;
-        healthText.text = "Health remaining: "+ currentHealth.ToString();
-    }
 
 
     /// <summary>
@@ -111,11 +96,17 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    /// <summary>
+    /// Activates the interaction text UI element.
+    /// </summary>
     public void RaycastOn()
     {
         interactionText.gameObject.SetActive(true);
     }
 
+    /// <summary>
+    /// Deactivates the interaction text UI element.
+    /// </summary>
     public void RaycastOff()
     {
         interactionText.gameObject.SetActive(false);

@@ -19,11 +19,6 @@ public class Collectible : Interactable
     /// <summary>
     /// The score value that this collectible is worth.
     /// </summary>
-    public int collectibleCount = 1;
-
-    /// <summary>
-    /// The score value that this collectible is worth.
-    /// </summary>
     public int myScore = 5;
 
     /// <summary>
@@ -46,6 +41,7 @@ public class Collectible : Interactable
     {
         base.Interact(thePlayer);
         ///Increases player score by collectible point value
+        GameManager.instance.currentObjective.text = "- Exit the ship and collect the coins " + GameManager.instance.collectibleCount + "/5".ToString();
         GameManager.instance.IncreaseScore(myScore);
         ///calls function that plays audio and destroys collectible
         Collected();

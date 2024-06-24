@@ -15,10 +15,6 @@ public class Hazard : MonoBehaviour
     /// </summary>
     public int damageAmount = -1;
     /// <summary>
-    /// boolean to check whether it will instantly kill the player
-    /// </summary>
-    public bool instaKill = false;
-    /// <summary>
     /// Audio played upon contact with hazard
     /// </summary>
     [SerializeField]
@@ -28,22 +24,10 @@ public class Hazard : MonoBehaviour
         /// Check if collided with player
         if(other.gameObject.tag == "Player")
         {
-            /// Check if hazard is instakill
-            if(instaKill == false)
-            {
-                ///Plays damage audio
-                AudioSource.PlayClipAtPoint(damageAudio, transform.position, 1f);
-                ///calls ChangeHealth function to damage the player and update health
-                GameManager.instance.ChangeHealth(damageAmount);
-            }
-            /// Check if hazard is instakill
-            else
-            {
-                ///Plays damage audio
-                AudioSource.PlayClipAtPoint(damageAudio, transform.position, 1f);
-                ///Xalls Instakill function to damage the player and update health to 0
-                GameManager.instance.InstaKill();
-            }
+            ///Plays damage audio
+            AudioSource.PlayClipAtPoint(damageAudio, transform.position, 1f);
+            ///calls ChangeHealth function to damage the player and update health
+            GameManager.instance.ChangeHealth(damageAmount);
         }
     }
 }
