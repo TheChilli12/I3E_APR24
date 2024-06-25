@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 624149756462262387}
   - component: {fileID: 7841182353311095909}
   m_Layer: 0
-  m_Name: spike
+  m_Name: spikedisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -405,7 +405,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: -1
-  instaKill: 0
   damageAudio: {fileID: 8300000, guid: 3fee2e089a8016f44b8c0f1d09cae2e2, type: 3}
 --- !u!114 &1846767998475989163
 MonoBehaviour:

@@ -7671,7 +7671,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: {fileID: 7944582426890259535}
   specialCollected: 0
-  objective1: 0
   healthText: {fileID: 7235248443130699194}
   currentObjective: {fileID: 1493543867}
   currentHealth: 3
