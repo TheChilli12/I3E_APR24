@@ -32,7 +32,11 @@ public class PauseMenu : SharedMenu
     public void PauseGame()
     {
         UnlockMouse();
-        mainMenu.SetActive(true);
+        Transform uiChild = GameManager.instance.transform.Find("UI");
+        if(uiChild != null)
+        {
+            uiChild.gameObject.SetActive(false);
+        }
         Time.timeScale = 0f;
         isPaused = true;
     }
@@ -40,7 +44,11 @@ public class PauseMenu : SharedMenu
     public void ResumeGame()
     {
         LockMouse();
-        mainMenu.SetActive(false);
+        Transform uiChild = GameManager.instance.transform.Find("UI");
+        if(uiChild != null)
+        {
+            uiChild.gameObject.SetActive(true);
+        }
         Time.timeScale = 1f;
         isPaused = false;
     }

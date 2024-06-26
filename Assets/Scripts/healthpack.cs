@@ -1,41 +1,59 @@
-
 /*
  * Author: Javier Chen Yuhong
- * Date: 18/06/2024
+ * Date: 26/06/2024
  * Description: 
- * Contains functions related to the healthpack
+ * Contains functions related to the healthpack collectible which can restore player health and complete an objective.
  */
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class healthpack : Collectible
+/// <summary>
+/// Represents a healthpack collectible in the game that can restore player health and potentially complete an objective.
+/// </summary>
+public class Healthpack : Collectible
 {
     /// <summary>
-    /// The linked teleporter that completes objective 1
+    /// The teleporter associated with completing the first objective. 
+    /// It will be unlocked when this healthpack is collected if it is an objective medkit.
     /// </summary>
     public SceneChanger objective1teleporter;
+
     /// <summary>
-    /// Determines if this is the medkit is objective medkit
+    /// Indicates whether this healthpack is the special medkit needed to complete the first objective.
     /// </summary>
     public bool objectiveMedkit = false;
+
     /// <summary>
-    /// The hp value that this collectible restores.
+    /// The amount of health that this healthpack restores to the player.
     /// </summary>
     public int myHealth = 1;
 
+    /// <summary>
+    /// Handles the interaction between the player and this healthpack.
+    /// If this healthpack is the objective medkit, it will complete the first objective
+    /// and unlock the associated teleporter. It also restores health to the player
+    /// and triggers the collectible behavior (e.g., playing a sound, destroying the object).
+    /// </summary>
+    /// <param name="thePlayer">The player who interacts with the healthpack.</param>
     public override void Interact(Player thePlayer)
     {
         if (objectiveMedkit == true)
         {
+            //Complete the first objective and 
             GameManager.instance.objective1complete();
+            //unlocks the teleporter.
             objective1teleporter.lockedbyMedkit = false;
         }
+
+        //Call the base interaction behavior.
         base.Interact(thePlayer);
-        ///Increases player HP by collectible point value
+
+        // ncrease the player's health by the healthpack's value.
         GameManager.instance.ChangeHealth(myHealth);
-        ///calls function that plays audio and destroys collectible
+
+        //Play the collection sound and destroy the healthpack.
         Collected();
     }
 }

@@ -48,6 +48,16 @@ public class GameManager : MonoBehaviour
     /// </summary>
     int currentScore = 0;
 
+    public bool objective1Current = true;
+
+    public bool objective2Current = false;
+
+    public bool objective3Current = false;
+
+    public bool objective4Current = false;
+
+    public bool objective5Current = false;
+
     /// <summary>
     /// Increases the score of the player by <paramref name="scoreToAdd"/>
     /// </summary>
@@ -55,6 +65,7 @@ public class GameManager : MonoBehaviour
 
     public void objective1complete()
     {
+        objective2Current = true;
         currentObjective.text = $"- Exit the ship and collect the coins {collectibleCount}/5";
     }
 
@@ -66,6 +77,44 @@ public class GameManager : MonoBehaviour
         // Increase the collectibleCount of the player by 1
         collectibleCount += 1;
         scoreText.text = currentScore.ToString();
+
+        if (collectibleCount == 5)
+        {
+            objective2Current = false;
+            objective3Current = true;
+        }
+        else if (collectibleCount == 10)
+        {
+            objective3Current = false;
+            objective4Current = true;
+        }
+        else if (collectibleCount == 10 && specialCollected == true)
+        {
+            objective4Current = false;
+            objective5Current = true;
+        }
+
+        UpdateObjectiveText();
+    }
+
+    private void UpdateObjectiveText()
+    {
+        if (objective2Current)
+        {
+            currentObjective.text = $"- Exit the ship and collect the coins {collectibleCount}/5 \n- Hint: The collect the magnifying glass to see what is supposed to be seen";
+        }
+        else if (objective3Current)
+        {
+            currentObjective.text = $"- Find the remaining coins hidden in the ruins {collectibleCount - 5}/5";
+        }
+        else if (objective4Current)
+        {
+            currentObjective.text = $"- Obtain the blue crystal";
+        }
+        else if (objective5Current)
+        {
+            currentObjective.text = $"- Return to the ship and place the crystal in the power source";
+        }
     }
 
     public void ChangeHealth(int hpToChange)

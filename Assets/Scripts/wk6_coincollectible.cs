@@ -20,7 +20,6 @@ public class CoinCollectible : Collectible
         base.Interact(thePlayer);
         ///Increases player score by collectible point value
         GameManager.instance.IncreaseScore(myScore);
-        GameManager.instance.currentObjective.text = "- Exit the ship and collect the coins " + GameManager.instance.collectibleCount + "/5".ToString();
         ///calls function that plays audio and destroys collectible
         Collected();
     }

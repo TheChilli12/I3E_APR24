@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8906534860042313605}
   - component: {fileID: 640840305788882837}
-  - component: {fileID: 5300039288213320613}
   - component: {fileID: 8079126314456107810}
   - component: {fileID: 5850106253756550591}
   - component: {fileID: 540323415642256734}
@@ -391,20 +390,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!114 &5300039288213320613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3450594449916526259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bb85a9a23a76134d939daafd515f4be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: -1
-  damageAudio: {fileID: 8300000, guid: 3fee2e089a8016f44b8c0f1d09cae2e2, type: 3}
 --- !u!114 &8079126314456107810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,7 +440,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5f7d590e40868994db0ab921c6d0ef32, type: 2}
+  - {fileID: 2100000, guid: eb829068047cc8d479a73a10c6e91895, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -495,7 +480,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7691954753478696974}
   - component: {fileID: 4754262513912014302}
-  - component: {fileID: 2774723712174285197}
   - component: {fileID: 5416639426265536754}
   - component: {fileID: 2748295803946854712}
   - component: {fileID: 7992446498388026329}
@@ -876,20 +860,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!114 &2774723712174285197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3492701944237422262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bb85a9a23a76134d939daafd515f4be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: -1
-  damageAudio: {fileID: 8300000, guid: 3fee2e089a8016f44b8c0f1d09cae2e2, type: 3}
 --- !u!114 &5416639426265536754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -940,7 +910,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5f7d590e40868994db0ab921c6d0ef32, type: 2}
+  - {fileID: 2100000, guid: eb829068047cc8d479a73a10c6e91895, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -980,7 +950,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6311266960601143796}
   - component: {fileID: 6325292345836542341}
-  - component: {fileID: 5267535241214983754}
   - component: {fileID: 5064509532597891179}
   - component: {fileID: 6758727279161666939}
   - component: {fileID: 3521893630684510471}
@@ -1361,20 +1330,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!114 &5267535241214983754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5148919970900573014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bb85a9a23a76134d939daafd515f4be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: -1
-  damageAudio: {fileID: 8300000, guid: 3fee2e089a8016f44b8c0f1d09cae2e2, type: 3}
 --- !u!114 &5064509532597891179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1425,7 +1380,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5f7d590e40868994db0ab921c6d0ef32, type: 2}
+  - {fileID: 2100000, guid: eb829068047cc8d479a73a10c6e91895, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1465,7 +1420,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4644462651810218754}
   - component: {fileID: 5814699803328830007}
-  - component: {fileID: 4608368341516684792}
   - component: {fileID: 8762231533130018113}
   - component: {fileID: 3255598018416988342}
   - component: {fileID: 3387085684822975032}
@@ -1846,20 +1800,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!114 &4608368341516684792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5379526182700376417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bb85a9a23a76134d939daafd515f4be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: -1
-  damageAudio: {fileID: 8300000, guid: 3fee2e089a8016f44b8c0f1d09cae2e2, type: 3}
 --- !u!114 &8762231533130018113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1910,7 +1850,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5f7d590e40868994db0ab921c6d0ef32, type: 2}
+  - {fileID: 2100000, guid: eb829068047cc8d479a73a10c6e91895, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1950,7 +1890,6 @@ GameObject:
   m_Component:
   - component: {fileID: 796622378654194354}
   - component: {fileID: 7329257191382438914}
-  - component: {fileID: 2700203397146134649}
   - component: {fileID: 2869650592012283710}
   - component: {fileID: 797351678012797755}
   - component: {fileID: 6237222723143883957}
@@ -2331,20 +2270,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!114 &2700203397146134649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7670923701010851830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bb85a9a23a76134d939daafd515f4be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: -1
-  damageAudio: {fileID: 8300000, guid: 3fee2e089a8016f44b8c0f1d09cae2e2, type: 3}
 --- !u!114 &2869650592012283710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2395,7 +2320,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5f7d590e40868994db0ab921c6d0ef32, type: 2}
+  - {fileID: 2100000, guid: eb829068047cc8d479a73a10c6e91895, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2434,6 +2359,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4187090238881349802}
+  - component: {fileID: 4250813231304164485}
   - component: {fileID: 5743389045302044671}
   m_Layer: 0
   m_Name: spikefield
@@ -2462,6 +2388,20 @@ Transform:
   - {fileID: 8906534860042313605}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4250813231304164485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8930050180835876252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb85a9a23a76134d939daafd515f4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: -1
+  damageAudio: {fileID: 8300000, guid: 3fee2e089a8016f44b8c0f1d09cae2e2, type: 3}
 --- !u!65 &5743389045302044671
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2477,7 +2417,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
