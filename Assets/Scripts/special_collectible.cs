@@ -20,6 +20,7 @@ public class specialCollectible : Collectible
         base.Interact(thePlayer);
         GameManager.instance.specialCollected = true;
         GameManager.instance.IncreaseScore(myScore);
+        GameManager.instance.UpdateObjectiveText();
         ///calls function that plays audio and destroys collectible
         Collected();
     }

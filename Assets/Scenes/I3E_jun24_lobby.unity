@@ -6132,6 +6132,7 @@ MonoBehaviour:
   mainMenu: {fileID: 8192535256256123228}
   currentPage: {fileID: 0}
   clickAudio: {fileID: 8300000, guid: 7ba29c44ee885ad4a8e029e061800248, type: 3}
+  targetSceneIndex: 0
   pauseContent: {fileID: 1915318837568045023}
 --- !u!224 &549749405906202264
 RectTransform:
@@ -7086,6 +7087,7 @@ MonoBehaviour:
   mainMenu: {fileID: 748864144972464878}
   currentPage: {fileID: 0}
   clickAudio: {fileID: 0}
+  targetSceneIndex: 0
   pauseContent: {fileID: 8847980181047967860}
 --- !u!222 &2176563453283556351
 CanvasRenderer:
@@ -7670,13 +7672,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionText: {fileID: 7944582426890259535}
   specialCollected: 0
+  medkitCollected: 0
   healthText: {fileID: 7235248443130699194}
   currentObjective: {fileID: 1493543867}
   currentHealth: 3
   collectibleCount: 0
-  objective2Current: 0
-  objective3Current: 0
-  objective4Current: 0
   scoreText: {fileID: 5519484939638882975}
 --- !u!1 &3195067226149382709
 GameObject:
@@ -10437,6 +10437,7 @@ MonoBehaviour:
   mainMenu: {fileID: 8192535256256123228}
   currentPage: {fileID: 0}
   clickAudio: {fileID: 0}
+  targetSceneIndex: 0
   pauseContent: {fileID: 0}
 --- !u!1 &7797492445667501272
 GameObject:

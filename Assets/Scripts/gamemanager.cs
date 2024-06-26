@@ -24,6 +24,13 @@ public class GameManager : MonoBehaviour
     public bool specialCollected = false;
 
     /// <summary>
+    /// Status of the Tutorial Healthpack
+    /// </summary>
+    [SerializeField]
+    public bool medkitCollected = false;
+
+
+    /// <summary>
     /// The UI text that stores the player score
     /// </summary>
     public TextMeshProUGUI healthText;
@@ -48,26 +55,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     int currentScore = 0;
 
-    public bool objective1Current = true;
-
-    public bool objective2Current = false;
-
-    public bool objective3Current = false;
-
-    public bool objective4Current = false;
-
-    public bool objective5Current = false;
-
     /// <summary>
     /// Increases the score of the player by <paramref name="scoreToAdd"/>
     /// </summary>
     /// <param name="scoreToAdd">The amount to increase by</param>
 
-    public void objective1complete()
-    {
-        objective2Current = true;
-        currentObjective.text = $"- Exit the ship and collect the coins {collectibleCount}/5";
-    }
 
     public void IncreaseScore(int scoreToAdd)
     {
@@ -77,45 +69,29 @@ public class GameManager : MonoBehaviour
         // Increase the collectibleCount of the player by 1
         collectibleCount += 1;
         scoreText.text = currentScore.ToString();
-
-        if (collectibleCount == 5)
-        {
-            objective2Current = false;
-            objective3Current = true;
-        }
-        else if (collectibleCount == 10)
-        {
-            objective3Current = false;
-            objective4Current = true;
-        }
-        else if (collectibleCount == 10 && specialCollected == true)
-        {
-            objective4Current = false;
-            objective5Current = true;
-        }
-
-        UpdateObjectiveText();
+        GameManager.instance.UpdateObjectiveText();
     }
 
-    private void UpdateObjectiveText()
+    public void UpdateObjectiveText()
     {
-        if (objective2Current)
+        if (collectibleCount >= 10 && specialCollected == true)
         {
-            currentObjective.text = $"- Exit the ship and collect the coins {collectibleCount}/5 \n- Hint: The collect the magnifying glass to see what is supposed to be seen";
+            currentObjective.text = $"- Return to the ship and place the crystal in the power source";            
         }
-        else if (objective3Current)
-        {
-            currentObjective.text = $"- Find the remaining coins hidden in the ruins {collectibleCount - 5}/5";
-        }
-        else if (objective4Current)
+        else if (collectibleCount >= 10)
         {
             currentObjective.text = $"- Obtain the blue crystal";
         }
-        else if (objective5Current)
+        else if (collectibleCount >= 5)
         {
-            currentObjective.text = $"- Return to the ship and place the crystal in the power source";
+            currentObjective.text = $"- Find the remaining coins hidden in the ruins {collectibleCount - 5}/5";
+        }
+        else if (medkitCollected == true)
+        {
+            currentObjective.text = $"- Exit the ship and collect the coins {collectibleCount}/5 \n- Hint: The collect the magnifying glass to see what is supposed to be seen";
         }
     }
+
 
     public void ChangeHealth(int hpToChange)
     {

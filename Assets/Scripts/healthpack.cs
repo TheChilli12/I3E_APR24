@@ -41,8 +41,9 @@ public class Healthpack : Collectible
     {
         if (objectiveMedkit == true)
         {
+            GameManager.instance.medkitCollected = true;
             //Complete the first objective and 
-            GameManager.instance.objective1complete();
+            GameManager.instance.UpdateObjectiveText();
             //unlocks the teleporter.
             objective1teleporter.lockedbyMedkit = false;
         }
