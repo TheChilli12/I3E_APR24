@@ -18,6 +18,38 @@ public class SceneChanger : Interactable
     /// </summary>
     public int targetSceneIndex;
 
+    [SerializeField]
+    public Material lockedMaterial;
+
+    [SerializeField]
+    public Material unlockedMaterial;
+
+    public GameObject door;
+    private Renderer doorRenderer;
+
+    private void Start()
+    {
+        if (door != null)
+        {
+            doorRenderer = door.GetComponent<Renderer>();
+        }
+    }
+
+    public void Update()
+    {
+        if (doorRenderer != null)
+        {
+            if (lockedbyMedkit == true || lockedbyCollectible > GameManager.instance.collectibleCount)
+            {
+                doorRenderer.material = lockedMaterial;
+            }
+            else
+            {
+                doorRenderer.material = unlockedMaterial;
+            }
+        }
+    }
+
     public override void Interact(Player thePlayer)
     {
         if (lockedbyMedkit == true)
