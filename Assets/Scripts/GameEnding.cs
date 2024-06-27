@@ -10,13 +10,15 @@ using UnityEngine;
 
 public class GameEnding : SceneChanger
 {
+    public GameObject crystal;
     public override void Interact(Player thePlayer)
     {
         ///Checks if collision is with player
         if (GameManager.instance.specialCollected == true)
         {
+            crystal.SetActive(true);
             ///calls change scene function
-            ChangeScene();
+            // ChangeScene();
         }
         else
         {

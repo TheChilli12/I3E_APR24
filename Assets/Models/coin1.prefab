@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac05d2a106673e4aa820522df0de35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectAudio: {fileID: 8300000, guid: d5ec98a09ce992e42a6c76b8318709b1, type: 3}
+  collectAudio: {fileID: 8300000, guid: 8c1df55ddc02c5c48afb34a31ab62432, type: 3}
   myScore: 5
 --- !u!136 &3868058750597871625
 CapsuleCollider:

@@ -7,6 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 /// <summary>
 /// The Spyglass class, inheriting from Collectible, manages the behavior of the Spyglass collectible item.
@@ -26,6 +27,11 @@ public class Spyglass : Collectible
     /// <param name="thePlayer">The player who interacts with the Spyglass.</param>
     public override void Interact(Player thePlayer)
     {
+
+        if (GameManager.instance.collectibleImage != null)
+        {
+            GameManager.instance.collectibleImage.gameObject.SetActive(true);
+        }
         // Activate the linked platform
         linkedPlatform.SetActive(true);
 

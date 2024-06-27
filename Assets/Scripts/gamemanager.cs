@@ -7,6 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public TextMeshProUGUI interactionText;
 
+    
     /// <summary>
     /// Status of the Special Collectible
     /// </summary>
@@ -35,6 +37,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public TextMeshProUGUI healthText;
 
+    /// <summary>
+    /// The UI image for the player collectible (TextMeshPro image)
+    /// </summary>
+    public Image collectibleImage;
+    
     /// <summary>
     /// The UI text that stores the player's objective
     /// </summary>
