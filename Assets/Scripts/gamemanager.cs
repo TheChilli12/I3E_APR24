@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public TextMeshProUGUI interactionText;
 
-    
     /// <summary>
     /// Status of the Special Collectible
     /// </summary>
@@ -38,7 +37,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI healthText;
 
     /// <summary>
-    /// The UI image for the player collectible (TextMeshPro image)
+    /// The UI image for the player spyglass (TextMeshPro image)
     /// </summary>
     public Image collectibleImage;
     
@@ -47,6 +46,12 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public TextMeshProUGUI currentObjective;
 
+    /// <summary>
+    /// The fade animation for scene changing
+    /// </summary>
+    public Animator transition;
+
+    public float transitionTime = 1f;
     /// <summary>
     /// The current health of the player
     /// </summary>
@@ -107,8 +112,52 @@ public class GameManager : MonoBehaviour
         currentHealth = Mathf.Max(0, currentHealth);
         healthText.text = $"Health remaining: {currentHealth}";
     }
+    public void GoToScene(int scene)
+    {
+        StartCoroutine(Loadlevel(scene));
+    }
 
+    public IEnumerator Loadlevel(int scene)
+    {
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(scene);
+        transition.SetTrigger("End");
+    }
 
+    public void RestartGame()
+    {
+        specialCollected = false;
+        medkitCollected = false;
+        currentHealth = 3;
+        collectibleCount = 0;
+        collectibleImage.gameObject.SetActive(false);
+    }
+
+    public void RestartGamelvl0()
+    {
+        medkitCollected = false;
+        currentHealth = 3;
+        UpdateObjectiveText();
+    }
+
+    public void RestartGamelvl1()
+    {
+        medkitCollected = true;
+        currentHealth = 4;
+        collectibleCount = 0;
+        collectibleImage.gameObject.SetActive(false);
+        UpdateObjectiveText();
+    }
+
+    public void RestartGamelvl2()
+    {
+        medkitCollected = true;
+        currentHealth = 4;
+        collectibleCount = 5;
+        collectibleImage.gameObject.SetActive(true);
+        UpdateObjectiveText();
+    }
 
     /// <summary>
     /// The UI text that stores the player score

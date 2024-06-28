@@ -70,7 +70,8 @@ public class SceneChanger : Interactable
     // Update is called once per frame
     public void ChangeScene()
     {
+        GameManager.instance.transition.SetTrigger("Start");
         ///load the scene by their index in the build
-        SceneManager.LoadScene(targetSceneIndex);
+        GameManager.instance.GoToScene(targetSceneIndex);
     }
 }
