@@ -57,4 +57,11 @@ public class Healthpack : Collectible
         //Play the collection sound and destroy the healthpack.
         Collected();
     }
+    void awake()
+    {
+        if (GameManager.instance.specialCollected == true)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

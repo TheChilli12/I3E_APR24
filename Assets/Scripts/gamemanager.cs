@@ -132,6 +132,7 @@ public class GameManager : MonoBehaviour
         currentHealth = 3;
         collectibleCount = 0;
         collectibleImage.gameObject.SetActive(false);
+        UpdateObjectiveText();
     }
 
     public void RestartGamelvl0()

@@ -11,7 +11,8 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : SharedMenu
 {
-    public int targetSceneIndex;
+    public int restartindex;
+    public int mainMenuIndex = 0;
     public GameObject pauseContent;
     public static bool isPaused = false;
 
@@ -46,18 +47,12 @@ public class PauseMenu : SharedMenu
         isPaused = false;
     }
 
-    public override void ExitGame()
+    public void backtostart()
     {
         Time.timeScale = 1f;
         ResumeGame();
         UnlockMouse();
-        SceneManager.LoadScene(0);
-    }
-
-    public override void backbutton()
-    {
-        currentPage.SetActive(false);
-        pauseContent.SetActive(true);
+        GameManager.instance.GoToScene(mainMenuIndex);
     }
 
     public void HelpGame()
@@ -67,8 +62,12 @@ public class PauseMenu : SharedMenu
         pauseContent.SetActive(false);
     }
 
-    public void restart()
+    public void Restart()
     {
-        SceneManager.LoadScene(targetSceneIndex);
+        LockMouse();
+        mainMenu.SetActive(false);
+        Time.timeScale = 1f;
+        GameManager.instance.RestartGame();
+        GameManager.instance.GoToScene(restartindex);
     }
 }

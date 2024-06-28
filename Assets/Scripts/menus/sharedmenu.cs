@@ -21,19 +21,7 @@ public class SharedMenu : MonoBehaviour
         mainMenu.SetActive(true);
     }
 
-    public virtual void HelpGame()
-    {
-        AudioSource.PlayClipAtPoint(clickAudio, transform.position, 1f);
-        helpMenu.SetActive(true);
-        currentPage = helpMenu;
-        mainMenu.SetActive(false);
-    }
 
-    public virtual void ExitGame()
-    {
-        Debug.Log("Player has quit");
-        Application.Quit();
-    }
 
     public void UnlockMouse()
     {

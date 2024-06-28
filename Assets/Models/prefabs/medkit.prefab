@@ -307,8 +307,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 252e339d94109624eace22016fdfadd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myHealth: 1
   collectAudio: {fileID: 8300000, guid: b01c6b9e8ca15f14d9605e3440ed273e, type: 3}
+  myScore: 5
+  objective1teleporter: {fileID: 0}
+  objectiveMedkit: 0
+  myHealth: 1
 --- !u!23 &9187001820953150619
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -329,7 +332,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d76d8900f55d45944b39bf709312e245, type: 2}
+  - {fileID: 2100000, guid: 655be98071cf9db43b004e18b6757e96, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
