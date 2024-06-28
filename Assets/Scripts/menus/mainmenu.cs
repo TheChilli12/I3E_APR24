@@ -1,8 +1,8 @@
 /*
  * Author: Javier Chen Yuhong
- * Date: 06/06/2024
+ * Date: 20/06/2024
  * Description: 
- * Main menu functions
+ * Contains functions related to the Main menu.
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -12,45 +12,33 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : SharedMenu
 {
+
     public GameObject creditsMenu;
     public GameObject settingsMenu;
-
     public AudioMixer BGM;
-
+    
     public void PlayGame()
     {
-        AudioSource.PlayClipAtPoint(clickAudio, transform.position, 1f);
         LockMouse();
         Time.timeScale = 1f;
         GameManager.instance.GoToScene(1);
     }
-    public void HelpGame()
-    {
-        AudioSource.PlayClipAtPoint(clickAudio, transform.position, 1f);
-        helpMenu.SetActive(true);
-        currentPage = helpMenu;
-        mainMenu.SetActive(false);
-    }
-
-    public void ExitGame()
-    {
-        Debug.Log("Player has quit");
-        Application.Quit();
-    }
 
     public void CreditsGame()
     {
-        AudioSource.PlayClipAtPoint(clickAudio, transform.position, 1f);
         creditsMenu.SetActive(true);
         currentPage = creditsMenu;
         mainMenu.SetActive(false);
     }
 
-    public virtual void SettingsGame()
+    /// <summary>
+    /// Displays the help menu and hides the main menu.
+    /// Sets the current page to the help menu.
+    /// </summary>
+    public virtual void HelpGame()
     {
-        AudioSource.PlayClipAtPoint(clickAudio, transform.position, 1f);
-        settingsMenu.SetActive(true);
-        currentPage = settingsMenu;
+        helpMenu.SetActive(true);
+        currentPage = helpMenu;
         mainMenu.SetActive(false);
     }
 
@@ -65,5 +53,22 @@ public class MainMenu : SharedMenu
             BGM.SetFloat("BGMtoggle",-80f);
         }
         Debug.Log(toggleValue);
+    }
+
+    public virtual void SettingsGame()
+    {
+        settingsMenu.SetActive(true);
+        currentPage = settingsMenu;
+        mainMenu.SetActive(false);
+    }
+
+    /// <summary>
+    /// Quits the application.
+    /// Logs a debug message indicating that the player has quit.
+    /// </summary>
+    public virtual void ExitGame()
+    {
+        Debug.Log("Player has quit");
+        Application.Quit();
     }
 }

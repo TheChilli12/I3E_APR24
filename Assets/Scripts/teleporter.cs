@@ -19,6 +19,12 @@ public class SceneChanger : Interactable
     public int targetSceneIndex;
 
     [SerializeField]
+    private AudioClip unlockAudio;
+
+    [SerializeField]
+    private AudioClip exitAudio;
+
+    [SerializeField]
     public Material lockedMaterial;
 
     [SerializeField]
@@ -70,7 +76,7 @@ public class SceneChanger : Interactable
     // Update is called once per frame
     public void ChangeScene()
     {
-        GameManager.instance.transition.SetTrigger("Start");
+        AudioSource.PlayClipAtPoint(exitAudio, transform.position, 1f);
         ///load the scene by their index in the build
         GameManager.instance.GoToScene(targetSceneIndex);
     }

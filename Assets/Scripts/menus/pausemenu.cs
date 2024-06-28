@@ -26,7 +26,10 @@ public class PauseMenu : SharedMenu
             }
             else
             {
-                PauseGame();
+                if(GameManager.instance.currentHealth > 0)
+                {
+                    PauseGame();
+                }
             }
         }
     }
@@ -67,7 +70,20 @@ public class PauseMenu : SharedMenu
         LockMouse();
         mainMenu.SetActive(false);
         Time.timeScale = 1f;
-        GameManager.instance.RestartGame();
-        GameManager.instance.GoToScene(restartindex);
+        if (restartindex == 1)
+        {
+            GameManager.instance.RestartGamelvl0();
+            GameManager.instance.GoToScene(restartindex);
+        }
+        else if (restartindex == 2)
+        {
+            GameManager.instance.RestartGamelvl1();
+            GameManager.instance.GoToScene(restartindex);
+        }
+        else if (restartindex == 3)
+        {
+            GameManager.instance.RestartGamelvl2();
+            GameManager.instance.GoToScene(restartindex);
+        }
     }
 }

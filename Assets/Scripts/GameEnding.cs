@@ -17,8 +17,7 @@ public class GameEnding : SceneChanger
         if (GameManager.instance.specialCollected == true)
         {
             crystal.SetActive(true);
-            ///calls change scene function
-            // ChangeScene();
+            GameManager.instance.GoToScene(5);
         }
         else
         {

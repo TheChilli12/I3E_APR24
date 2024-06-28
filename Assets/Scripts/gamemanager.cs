@@ -62,10 +62,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public int collectibleCount = 0;
 
-    /// <summary>
-    /// The current score of the player
-    /// </summary>
-    int currentScore = 0;
 
     /// <summary>
     /// Increases the score of the player by <paramref name="scoreToAdd"/>
@@ -73,14 +69,11 @@ public class GameManager : MonoBehaviour
     /// <param name="scoreToAdd">The amount to increase by</param>
 
 
-    public void IncreaseScore(int scoreToAdd)
+    public void IncreaseScore()
     {
-        // Increase the score of the player by scoreToAdd
-        currentScore += scoreToAdd;
 
         // Increase the collectibleCount of the player by 1
         collectibleCount += 1;
-        scoreText.text = currentScore.ToString();
         GameManager.instance.UpdateObjectiveText();
     }
 
@@ -102,15 +95,27 @@ public class GameManager : MonoBehaviour
         {
             currentObjective.text = $"- Exit the ship and collect the coins {collectibleCount}/5 \n- Hint: The collect the magnifying glass to see what is supposed to be seen";
         }
+        else if (medkitCollected == false)
+        {
+            currentObjective.text = $"- - Collect the medit located near the bed \n- (Optional) view the hazards detected on this foreign planet";
+        }
     }
-
-
+    void update()
+    {
+        UpdateObjectiveText();
+    }
     public void ChangeHealth(int hpToChange)
     {
         // Change the health of the player by hpToChange
         currentHealth += hpToChange;
         currentHealth = Mathf.Max(0, currentHealth);
         healthText.text = $"Health remaining: {currentHealth}";
+        if (currentHealth == 0)
+        {
+            GoToScene(4);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
     public void GoToScene(int scene)
     {
@@ -132,6 +137,7 @@ public class GameManager : MonoBehaviour
         currentHealth = 3;
         collectibleCount = 0;
         collectibleImage.gameObject.SetActive(false);
+        healthText.text = $"Health remaining: {currentHealth}";
         UpdateObjectiveText();
     }
 
@@ -139,6 +145,7 @@ public class GameManager : MonoBehaviour
     {
         medkitCollected = false;
         currentHealth = 3;
+        healthText.text = $"Health remaining: {currentHealth}";
         UpdateObjectiveText();
     }
 
@@ -148,6 +155,7 @@ public class GameManager : MonoBehaviour
         currentHealth = 4;
         collectibleCount = 0;
         collectibleImage.gameObject.SetActive(false);
+        healthText.text = $"Health remaining: {currentHealth}";
         UpdateObjectiveText();
     }
 
@@ -157,6 +165,7 @@ public class GameManager : MonoBehaviour
         currentHealth = 4;
         collectibleCount = 5;
         collectibleImage.gameObject.SetActive(true);
+        healthText.text = $"Health remaining: {currentHealth}";
         UpdateObjectiveText();
     }
 

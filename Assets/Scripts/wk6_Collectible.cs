@@ -17,11 +17,6 @@ public class Collectible : Interactable
     private AudioClip collectAudio;
 
     /// <summary>
-    /// The score value that this collectible is worth.
-    /// </summary>
-    public int myScore = 5;
-
-    /// <summary>
     /// Performs actions related to collection of the collectible
     /// </summary>
     public void Collected()
