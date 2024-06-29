@@ -11418,7 +11418,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b71c62e0959024d827087c52c61c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offAudio: {fileID: 8300000, guid: 1fb500f5b2d22e94da8e2dc92fbe2a4e, type: 3}
+  lockedbyMedkit: 0
+  lockedbyCollectible: 0
+  targetSceneIndex: 0
+  unlockAudio: {fileID: 0}
+  exitAudio: {fileID: 0}
+  lockedMaterial: {fileID: 0}
+  unlockedMaterial: {fileID: 0}
+  door: {fileID: 0}
+  offAudio: {fileID: 8300000, guid: cb5a041000b74584997592952a7e85d8, type: 3}
   onAudio: {fileID: 8300000, guid: 6423486780b63154e831be63a9b1784b, type: 3}
   crystal: {fileID: 2610831277071359109}
 --- !u!136 &8463789809307868113

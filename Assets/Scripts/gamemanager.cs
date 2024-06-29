@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
     public void IncreaseScore()
     {
         collectibleCount += 1;
+        // Updates the objective text in the GameManager.
         GameManager.instance.UpdateObjectiveText();
     }
 
@@ -117,6 +118,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     void Update()
     {
+        // Calls the UpdateObjectiveText method every frame.
         UpdateObjectiveText();
     }
 
@@ -141,6 +143,7 @@ public class GameManager : MonoBehaviour
     /// <param name="scene">The index of the scene to change to.</param>
     public void GoToScene(int scene)
     {
+        // Starts the LoadLevel coroutine.
         StartCoroutine(Loadlevel(scene));
     }
 
@@ -151,6 +154,7 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     public IEnumerator Loadlevel(int scene)
     {
+        // Triggers the scene transition animation.
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(scene);
@@ -208,6 +212,9 @@ public class GameManager : MonoBehaviour
         UpdateObjectiveText();
     }
 
+    /// <summary>
+    /// Ensures that only 1 Game manager exists at a time when moving from scene to scene
+    /// </summary>
     private void Awake()
     {
         if(instance == null)

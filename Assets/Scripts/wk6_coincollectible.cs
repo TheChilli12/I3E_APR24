@@ -1,6 +1,6 @@
 /*
  * Author: Javier Chen Yuhong
- * Date: 18/06/2024
+ * Date: 29/06/2024
  * Description: 
  * Specialized type of Collectible that increases player score upon interaction.
  */

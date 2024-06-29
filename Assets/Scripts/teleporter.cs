@@ -81,9 +81,12 @@ public class SceneChanger : Interactable
             }
             else
             {
+                //replaces lock material with unlock material indicating the door is open
                 doorRenderer.material = unlockedMaterial;
+                //Plays the unlock audio
                 AudioSource.PlayClipAtPoint(unlockAudio, transform.position, 3f);
-                enabled = false;  // Stop updating once unlocked
+                // Stop updating once unlocked
+                enabled = false;  
             }
         }
     }
