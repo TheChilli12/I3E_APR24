@@ -1,8 +1,8 @@
 /*
  * Author: Javier Chen Yuhong
- * Date: 13/06/2024
+ * Date: 29/06/2024
  * Description: 
- * Contains functions related to instakill and damage hazards
+ * Contains functions related to instakill and damage hazards.
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -11,22 +11,29 @@ using UnityEngine;
 public class Hazard : MonoBehaviour
 {
     /// <summary>
-    /// How much damage is done to the player
+    /// The amount of damage inflicted on the player upon contact with the hazard.
     /// </summary>
     public int damageAmount = -1;
+
     /// <summary>
-    /// Audio played upon contact with hazard
+    /// The audio clip played when the player collides with the hazard.
     /// </summary>
     [SerializeField]
     private AudioClip damageAudio;
+
+    /// <summary>
+    /// Triggers when another collider enters this hazard's trigger collider.
+    /// </summary>
+    /// <param name="other">The collider that entered this hazard's trigger collider.</param>
     private void OnTriggerEnter(Collider other)
     {
-        /// Check if collided with player
-        if(other.gameObject.tag == "Player")
+        // Check if the collided object has the "Player" tag.
+        if (other.gameObject.CompareTag("Player"))
         {
-            ///Plays damage audio
+            // Play the damage audio at the hazard's position.
             AudioSource.PlayClipAtPoint(damageAudio, transform.position, 1f);
-            ///calls ChangeHealth function to damage the player and update health
+
+            // Damage the player by calling the GameManager's ChangeHealth function.
             GameManager.instance.ChangeHealth(damageAmount);
         }
     }

@@ -1,6 +1,6 @@
 /*
  * Author: Javier Chen Yuhong
- * Date: 25/06/2024
+ * Date: 29/06/2024
  * Description: 
  * Contains functions related to the Spyglass.
  */
@@ -10,8 +10,8 @@ using UnityEngine;
 using TMPro;
 
 /// <summary>
-/// The Spyglass class, inheriting from Collectible, manages the behavior of the Spyglass collectible item.
-/// When interacted with, it activates a linked platform.
+/// The Spyglass class manages the behavior of the Spyglass collectible item, inheriting from Collectible.
+/// When interacted with, it activates a linked platform and triggers the collection process.
 /// </summary>
 public class Spyglass : Collectible
 {
@@ -27,19 +27,19 @@ public class Spyglass : Collectible
     /// <param name="thePlayer">The player who interacts with the Spyglass.</param>
     public override void Interact(Player thePlayer)
     {
+        // Activates the linked platform associated with the Spyglass.
+        linkedPlatform.SetActive(true);
 
+        // Ensures that the collectible image is set active in the UI.
         if (GameManager.instance.collectibleImage != null)
         {
             GameManager.instance.collectibleImage.gameObject.SetActive(true);
         }
-        // Activate the linked platform
-        linkedPlatform.SetActive(true);
 
-        // Call the base class Interact method
+        // Calls the base class Interact method to handle basic collectible interactions.
         base.Interact(thePlayer);
 
-        // Play collection audio and destroy the collectible
+        // Plays collection audio and destroys the collectible GameObject.
         Collected();
     }
 }
-

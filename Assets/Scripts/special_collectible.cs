@@ -10,6 +10,8 @@ using UnityEngine;
 
 public class specialCollectible : Collectible
 {
+    public GameObject portal;
+    public AudioSource portalOpen;
     /// <summary>
     /// Handles the collectibles interaction.
     /// Increase the player's score and destroy itself
@@ -21,6 +23,8 @@ public class specialCollectible : Collectible
         GameManager.instance.specialCollected = true;
         GameManager.instance.IncreaseScore();
         GameManager.instance.UpdateObjectiveText();
+        portalOpen.Play();
+        portal.SetActive(true);
         ///calls function that plays audio and destroys collectible
         Collected();
     }

@@ -2,25 +2,31 @@
  * Author: Javier Chen Yuhong
  * Date: 18/06/2024
  * Description: 
- * The Collectible will destroy itself after being collided with.
+ * Specialized type of Collectible that increases player score upon interaction.
  */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Specialized type of Collectible that increases player score upon interaction.
+/// </summary>
 public class CoinCollectible : Collectible
 {
     /// <summary>
-    /// Handles the collectibles interaction.
-    /// Increase the player's score and destroy itself
+    /// Handles the collectible's interaction.
+    /// Increases the player's score and destroys itself.
     /// </summary>
     /// <param name="thePlayer">The player that interacted with the object.</param>
     public override void Interact(Player thePlayer)
     {
+        // Calls the Interact function from the base Collectible class.
         base.Interact(thePlayer);
-        ///Increases player score by collectible point value
+
+        // Increases the player's score by the collectible point value.
         GameManager.instance.IncreaseScore();
-        ///calls function that plays audio and destroys collectible
+
+        // Calls the function that plays the audio and destroys the collectible.
         Collected();
     }
 }

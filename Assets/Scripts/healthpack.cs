@@ -1,6 +1,6 @@
 /*
  * Author: Javier Chen Yuhong
- * Date: 26/06/2024
+ * Date: 29/06/2024
  * Description: 
  * Contains functions related to the healthpack collectible which can restore player health and complete an objective.
  */
@@ -32,32 +32,34 @@ public class Healthpack : Collectible
 
     /// <summary>
     /// Handles the interaction between the player and this healthpack.
-    /// If this healthpack is the objective medkit, it will complete the first objective
-    /// and unlock the associated teleporter. It also restores health to the player
-    /// and triggers the collectible behavior (e.g., playing a sound, destroying the object).
+    /// If this healthpack is the objective medkit, it completes the first objective,
+    /// unlocks the associated teleporter, restores health to the player, and triggers collectible behavior.
     /// </summary>
     /// <param name="thePlayer">The player who interacts with the healthpack.</param>
     public override void Interact(Player thePlayer)
     {
+        // If this healthpack is the objective medkit, complete the first objective and unlock the teleporter.
         if (objectiveMedkit == true)
         {
             GameManager.instance.medkitCollected = true;
-            //Complete the first objective and 
             GameManager.instance.UpdateObjectiveText();
-            //unlocks the teleporter.
             objective1teleporter.lockedbyMedkit = false;
         }
 
-        //Call the base interaction behavior.
+        // Call the base interaction behavior.
         base.Interact(thePlayer);
 
-        // ncrease the player's health by the healthpack's value.
+        // Increase the player's health by the healthpack's value.
         GameManager.instance.ChangeHealth(myHealth);
 
-        //Play the collection sound and destroy the healthpack.
+        // Play the collection sound and destroy the healthpack.
         Collected();
     }
-    void awake()
+    
+    /// <summary>
+    /// Destroys the healthpack if the special collectible has already been collected.
+    /// </summary>
+    void Awake()
     {
         if (GameManager.instance.specialCollected == true)
         {

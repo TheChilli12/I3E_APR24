@@ -1,6 +1,6 @@
 /*
  * Author: Javier Chen Yuhong
- * Date: 18/06/2024
+ * Date: 29/06/2024
  * Description: 
  * The door that opens when the player is near it and presses the interact button.
  */
@@ -8,111 +8,103 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The door that opens when the player is near it and presses the interact button.
+/// </summary>
 public class Door : Interactable
 {
+    /// <summary>
+    /// The pivot point for the door.
+    /// </summary>
     public GameObject doorPivot;
-    /// <summary>
-    /// Flags if the door is open
-    /// </summary>
-    bool opened = false;
 
     /// <summary>
-    /// Flags if the door is locked
+    /// The number of collectibles required to open the door.
     /// </summary>
-    bool locked = false;
-
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     // Check if the obejct entering the trigger has the "Player" tag
-    //     if(other.gameObject.tag == "Player")
-    //     {
-    //         // Store the current player
-    //         currentPlayer = other.gameObject.GetComponent<Player>();
-
-    //         // Update the player interactable to be this door.
-    //         UpdatePlayerInteractable(currentPlayer);
-    //     }
-    // }
-
-    // private void OnTriggerExit(Collider other)
-    // {
-    //     // Check if the obejct exiting the trigger has the "Player" tag
-    //     if (other.gameObject.tag == "Player")
-    //     {
-    //         CloseDoor();
-    //         // Remove the player Interactable
-    //         RemovePlayerInteractable(currentPlayer);
-
-    //         // Set the current Player to null
-    //         currentPlayer = null;
-    //     }
-    // }
+    public int openReq;
 
     /// <summary>
-    /// Handles the door's interaction
+    /// The audio clip to play when the door unlocks.
     /// </summary>
-    /// <param name="thePlayer">The player that interacted with the door</param>
+    [SerializeField]
+    private AudioClip unlockAudio;
+
+    /// <summary>
+    /// Flags if the door is open.
+    /// </summary>
+    private bool opened = false;
+
+    /// <summary>
+    /// Flags if the door is locked.
+    /// </summary>
+    private bool locked = false;
+
+    /// <summary>
+    /// Duration for the door to open.
+    /// </summary>
+    public float openDuration = 1f;
+
+    /// <summary>
+    /// Distance the door should move downwards.
+    /// </summary>
+    public float openDistance = 3f;
+
+    /// <summary>
+    /// Handles the door's interaction.
+    /// </summary>
+    /// <param name="thePlayer">The player that interacted with the door.</param>
     public override void Interact(Player thePlayer)
     {
-        if(!opened)
+        // Check if the player has collected enough items to open the door.
+        if (GameManager.instance.collectibleCount >= openReq)
         {
             // Call the Interact function from the base Interactable class.
             base.Interact(thePlayer);
 
-            // Call the OpenDoor() function
-            OpenDoor();
+            // Play the unlock audio clip.
+            AudioSource.PlayClipAtPoint(unlockAudio, transform.position, 3f);
+
+            // Start the coroutine to open the door.
+            StartCoroutine(OpenDoor());
         }
         else
         {
-            base.Interact(thePlayer);
-            CloseDoor();
+            GameManager.instance.interactionText.text = "Insufficient coins";
         }
     }
 
     /// <summary>
-    /// Handles the door opening 
+    /// Handles the door opening.
     /// </summary>
-    public void OpenDoor()
+    private IEnumerator OpenDoor()
     {
-        // Door should open only when it is not locked
-        // and not already opened.
-        if(!locked && !opened)
+        // Door should open only when it is not locked and not already opened.
+        if (!locked && !opened)
         {
-            // Cannot directly modify the transform rotation.
-            // transform.eulerAngles.y += 90f;
+            // Store the initial and target positions.
+            Vector3 initialPosition = doorPivot.transform.position;
+            Vector3 targetPosition = initialPosition + new Vector3(0, -openDistance, 0);
 
-            // Create a new Vector3 and store the current rotation.
-            Vector3 newRotation = doorPivot.transform.eulerAngles;
-            newRotation.y += 90f;
-            doorPivot.transform.eulerAngles = newRotation;
-            opened = true;    
+            float elapsedTime = 0f;
+
+            // Smoothly move the door downwards.
+            while (elapsedTime < openDuration)
+            {
+                // Interpolate the door's position between the initial and target positions.
+                doorPivot.transform.position = Vector3.Lerp(initialPosition, targetPosition, elapsedTime / openDuration);
+
+                // Increment the elapsed time.
+                elapsedTime += Time.deltaTime;
+
+                // Yield control back to the Unity engine until the next frame.
+                yield return null;
+            }
+
+            // Ensure the door reaches the target position.
+            doorPivot.transform.position = targetPosition;
+
+            // Mark the door as opened.
+            opened = true;
         }
-    }
-
-    public void CloseDoor()
-    {
-        // Door should open only when it is not locked
-        // and not already opened.
-        if(!locked && opened)
-        {
-            // Cannot directly modify the transform rotation.
-            // transform.eulerAngles.y += 90f;
-
-            // Create a new Vector3 and store the current rotation.
-            Vector3 newRotation = doorPivot.transform.eulerAngles;
-            newRotation.y -= 90f;
-            doorPivot.transform.eulerAngles = newRotation;
-            opened = false;    
-        }
-    }
-
-    /// <summary>
-    /// Sets the lock status of the door.
-    /// </summary>
-    /// <param name="lockStatus">The lock status of the door</param>
-    public void SetLock(bool lockStatus)
-    {
-        // Assign the lockStatus value to the locked bool.
-        locked = lockStatus;
     }
 }

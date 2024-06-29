@@ -748,7 +748,7 @@ MonoBehaviour:
   clickAudio: {fileID: 8300000, guid: 7ba29c44ee885ad4a8e029e061800248, type: 3}
   restartindex: 1
   mainMenuIndex: 0
-  pauseContent: {fileID: 0}
+  pauseContent: {fileID: 1717195916366634151}
 --- !u!1 &7083924751893146614
 GameObject:
   m_ObjectHideFlags: 0

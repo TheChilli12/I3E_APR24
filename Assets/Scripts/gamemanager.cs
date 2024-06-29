@@ -1,8 +1,8 @@
 /*
  * Author: Javier Chen Yuhong
- * Date: 13/06/2024
+ * Date: 29/06/2024
  * Description: 
- * Handles systems of the game such as HP, score and collectible count
+ * Handles systems of the game such as HP, score, and collectible count
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -12,48 +12,57 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
-{
+{    
+    /// <summary>
+    /// Single instance of the GameManager.
+    /// </summary>
     public static GameManager instance;
-    
+
+    /// <summary>
+    /// The UI text that stores the interaction message.
+    /// </summary>
     [SerializeField]
     public TextMeshProUGUI interactionText;
 
     /// <summary>
-    /// Status of the Special Collectible
+    /// Status of the Special Collectible.
     /// </summary>
     [SerializeField]
     public bool specialCollected = false;
 
     /// <summary>
-    /// Status of the Tutorial Healthpack
+    /// Status of the Tutorial Healthpack.
     /// </summary>
     [SerializeField]
     public bool medkitCollected = false;
 
-
     /// <summary>
-    /// The UI text that stores the player score
+    /// The UI text that stores the player's health.
     /// </summary>
     public TextMeshProUGUI healthText;
 
     /// <summary>
-    /// The UI image for the player spyglass (TextMeshPro image)
+    /// The UI image for the player spyglass (TextMeshPro image).
     /// </summary>
     public Image collectibleImage;
     
     /// <summary>
-    /// The UI text that stores the player's objective
+    /// The UI text that stores the player's objective.
     /// </summary>
     public TextMeshProUGUI currentObjective;
 
     /// <summary>
-    /// The fade animation for scene changing
+    /// The animator for the scene transition.
     /// </summary>
     public Animator transition;
 
-    public float transitionTime = 1f;
     /// <summary>
-    /// The current health of the player
+    /// The duration of the scene transition.
+    /// </summary>
+    public float transitionTime = 1f;
+
+    /// <summary>
+    /// The current health of the player.
     /// </summary>
     public int currentHealth = 3;
 
@@ -62,21 +71,23 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public int collectibleCount = 0;
 
+    /// <summary>
+    /// The UI text that stores the player score.
+    /// </summary>
+    public TextMeshProUGUI scoreText;
 
     /// <summary>
-    /// Increases the score of the player by <paramref name="scoreToAdd"/>
+    /// Increases the score of the player.
     /// </summary>
-    /// <param name="scoreToAdd">The amount to increase by</param>
-
-
     public void IncreaseScore()
     {
-
-        // Increase the collectibleCount of the player by 1
         collectibleCount += 1;
         GameManager.instance.UpdateObjectiveText();
     }
 
+    /// <summary>
+    /// Updates the objective text based on the current game state.
+    /// </summary>
     public void UpdateObjectiveText()
     {
         if (collectibleCount >= 10 && specialCollected == true)
@@ -93,35 +104,51 @@ public class GameManager : MonoBehaviour
         }
         else if (medkitCollected == true)
         {
-            currentObjective.text = $"- Exit the ship and collect the coins {collectibleCount}/5 \n- Hint: The collect the magnifying glass to see what is supposed to be seen";
+            currentObjective.text = $"- Exit the ship and collect the coins {collectibleCount}/5 \n- Hint: Collect the magnifying glass to see what is supposed to be seen";
         }
         else if (medkitCollected == false)
         {
-            currentObjective.text = $"- - Collect the medit located near the bed \n- (Optional) view the hazards detected on this foreign planet";
+            currentObjective.text = $"- Collect the medkit located near the bed \n- (Optional) View the hazards detected on this foreign planet";
         }
     }
-    void update()
+
+    /// <summary>
+    /// Updates the objective text every frame.
+    /// </summary>
+    void Update()
     {
         UpdateObjectiveText();
     }
+
+    /// <summary>
+    /// Changes the health of the player by a specified amount.
+    /// </summary>
+    /// <param name="hpToChange">The amount to change the health by.</param>
     public void ChangeHealth(int hpToChange)
     {
-        // Change the health of the player by hpToChange
         currentHealth += hpToChange;
         currentHealth = Mathf.Max(0, currentHealth);
         healthText.text = $"Health remaining: {currentHealth}";
         if (currentHealth == 0)
         {
             GoToScene(4);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
         }
     }
+
+    /// <summary>
+    /// Changes the scene to the specified scene index.
+    /// </summary>
+    /// <param name="scene">The index of the scene to change to.</param>
     public void GoToScene(int scene)
     {
         StartCoroutine(Loadlevel(scene));
     }
 
+    /// <summary>
+    /// Coroutine to handle the scene loading with transition.
+    /// </summary>
+    /// <param name="scene">The index of the scene to load.</param>
+    /// <returns></returns>
     public IEnumerator Loadlevel(int scene)
     {
         transition.SetTrigger("Start");
@@ -130,6 +157,9 @@ public class GameManager : MonoBehaviour
         transition.SetTrigger("End");
     }
 
+    /// <summary>
+    /// Restarts the game, resetting all relevant variables.
+    /// </summary>
     public void RestartGame()
     {
         specialCollected = false;
@@ -141,6 +171,9 @@ public class GameManager : MonoBehaviour
         UpdateObjectiveText();
     }
 
+    /// <summary>
+    /// Restarts the game from level 0.
+    /// </summary>
     public void RestartGamelvl0()
     {
         medkitCollected = false;
@@ -149,6 +182,9 @@ public class GameManager : MonoBehaviour
         UpdateObjectiveText();
     }
 
+    /// <summary>
+    /// Restarts the game from level 1.
+    /// </summary>
     public void RestartGamelvl1()
     {
         medkitCollected = true;
@@ -159,6 +195,9 @@ public class GameManager : MonoBehaviour
         UpdateObjectiveText();
     }
 
+    /// <summary>
+    /// Restarts the game from level 2.
+    /// </summary>
     public void RestartGamelvl2()
     {
         medkitCollected = true;
@@ -168,11 +207,6 @@ public class GameManager : MonoBehaviour
         healthText.text = $"Health remaining: {currentHealth}";
         UpdateObjectiveText();
     }
-
-    /// <summary>
-    /// The UI text that stores the player score
-    /// </summary>
-    public TextMeshProUGUI scoreText;
 
     private void Awake()
     {

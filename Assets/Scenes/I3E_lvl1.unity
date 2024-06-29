@@ -6916,7 +6916,7 @@ MonoBehaviour:
   lockedbyMedkit: 0
   lockedbyCollectible: 5
   targetSceneIndex: 3
-  unlockAudio: {fileID: 0}
+  unlockAudio: {fileID: 8300000, guid: dc4e149c4707d6b429dd34af2717ae42, type: 3}
   exitAudio: {fileID: 8300000, guid: 1f589725d7bfec948968e7d3a91848cb, type: 3}
   lockedMaterial: {fileID: 2100000, guid: 330af478d062e00459c8f6fe0dd5e2aa, type: 2}
   unlockedMaterial: {fileID: 2100000, guid: 65ab7a2fde6029f4c9f08bacbf3772c2, type: 2}
@@ -13677,7 +13677,7 @@ PrefabInstance:
     - target: {fileID: 161946017048959563, guid: 03fc07f4ad572fc489c4a1cc146ee504,
         type: 3}
       propertyPath: dmg
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 161946017048959563, guid: 03fc07f4ad572fc489c4a1cc146ee504,
         type: 3}
@@ -16816,7 +16816,7 @@ Transform:
   m_GameObject: {fileID: 1637979140}
   serializedVersion: 2
   m_LocalRotation: {x: 8.565184e-23, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.11442492, y: -1, z: -0.43944326}
+  m_LocalPosition: {x: 0.12, y: -1, z: -0.43944326}
   m_LocalScale: {x: 0.5990894, y: 1, z: 0.4282655}
   m_ConstrainProportionsScale: 0
   m_Children: []
