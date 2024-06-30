@@ -180,10 +180,19 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void RestartGamelvl0()
     {
-        medkitCollected = false;
-        currentHealth = 3;
-        healthText.text = $"Health remaining: {currentHealth}";
-        UpdateObjectiveText();
+        //checks if the player has played through the last level before restarting the stats
+        if (specialCollected == false)
+        {
+            medkitCollected = false;
+            currentHealth = 3;
+            healthText.text = $"Health remaining: {currentHealth}";
+            UpdateObjectiveText();
+        }
+        else
+        {
+            healthText.text = $"Health remaining: {currentHealth}";
+            UpdateObjectiveText();
+        }
     }
 
     /// <summary>

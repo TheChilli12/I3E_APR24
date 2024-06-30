@@ -98,7 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectAudio: {fileID: 8300000, guid: 8c1df55ddc02c5c48afb34a31ab62432, type: 3}
-  myScore: 5
 --- !u!136 &3868058750597871625
 CapsuleCollider:
   m_ObjectHideFlags: 0
