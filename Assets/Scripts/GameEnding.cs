@@ -1,6 +1,6 @@
 /*
  * Author: Javier Chen Yuhong
- * Date: 24/06/2024
+ * Date: 30/06/2024
  * Description: 
  * Contains functions related to the Ending of the game.
  */

@@ -1,6 +1,6 @@
 /*
  * Author: Javier Chen Yuhong
- * Date: 29/06/2024
+ * Date: 30/06/2024
  * Description: 
  * Handles systems of the game such as HP, score, and collectible count
  */
